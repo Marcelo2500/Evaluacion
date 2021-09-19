@@ -5,5 +5,24 @@
 </ion-header>
 
 <ion-content>
+  <ion-text color="primary">
+    <h1>Ingrese sus Datos</h1>
+  </ion-text>
+    
+  <ion-input type="char" placeholder="Usuario" #usuario></ion-input>
+  <ion-input type="char" placeholder="Contraseña" #contrasenia></ion-input>
+  <br>
+
+  <ion-button (click)="ingresar(usuario, contrasenia)" 
+  expand="block" fill="clear" shape="round">
+   ingresar
+  </ion-button>
+
+  <br>
+  <div *ngIf="aviso;">
+    <ion-text color="primary">
+      <h1>{{aviso}}</h1>
+    </ion-text>
+  </div>
 
 </ion-content>
