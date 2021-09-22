@@ -32,17 +32,8 @@ export class LoginPage implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
+  ///////////////////////////////////////////////
+  
   ingresar(d1 : HTMLInputElement,
            d2 : HTMLInputElement)
 
