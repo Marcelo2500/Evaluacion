@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'cambiar',
     loadChildren: () => import('./cambiar/cambiar.module').then( m => m.CambiarPageModule)
   },
+  {
+    path: 'index',
+    loadChildren: () => import('./index/index.module').then( m => m.IndexPageModule)
+  },
 ];
 
 @NgModule({
