@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CambiarContraPageRoutingModule } from './cambiar-contra-routing.module';
+import { CambiarPageRoutingModule } from './cambiar-routing.module';
 
-import { CambiarContraPage } from './cambiar-contra.page';
+import { CambiarPage } from './cambiar.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CambiarContraPageRoutingModule
+    CambiarPageRoutingModule
   ],
-  declarations: [CambiarContraPage]
+  declarations: [CambiarPage]
 })
-export class CambiarContraPageModule {}
+export class CambiarPageModule {}

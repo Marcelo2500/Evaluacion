@@ -16,8 +16,8 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'cambiar-contra',
-    loadChildren: () => import('./cambiar-contra/cambiar-contra.module').then( m => m.CambiarContraPageModule)
+    path: 'cambiar',
+    loadChildren: () => import('./cambiar/cambiar.module').then( m => m.CambiarPageModule)
   },
 ];
 

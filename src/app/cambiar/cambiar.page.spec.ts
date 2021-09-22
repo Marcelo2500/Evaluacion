@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CambiarContraPage } from './cambiar-contra.page';
+import { CambiarPage } from './cambiar.page';
 
-describe('CambiarContraPage', () => {
-  let component: CambiarContraPage;
-  let fixture: ComponentFixture<CambiarContraPage>;
+describe('CambiarPage', () => {
+  let component: CambiarPage;
+  let fixture: ComponentFixture<CambiarPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CambiarContraPage ],
+      declarations: [ CambiarPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CambiarContraPage);
+    fixture = TestBed.createComponent(CambiarPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
