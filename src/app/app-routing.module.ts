@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: 'ingresar-user',
     loadChildren: () => import('./ingresar-user/ingresar-user.module').then( m => m.IngresarUserPageModule)
-  },
+  }
 ];
 
 @NgModule({
