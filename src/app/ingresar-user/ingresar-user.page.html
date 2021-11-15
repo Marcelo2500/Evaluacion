@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ingresar nuevo usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-text color="primary">
+    <h1>Ingrese los Datos</h1>
+  </ion-text>
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input placeholder="Ej: Juan Díaz" #txtNombre></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">contraseña</ion-label>
+    <ion-input placeholder="Ej: 56960504030" #txtContrasenia></ion-input>
+</ion-item>
+  <br><br>
+  <ion-button expand="block" (click)="agregar(nombre, url, comentario)">
+    Confirmar
+  </ion-button>
+  <hr>
+</ion-content>
