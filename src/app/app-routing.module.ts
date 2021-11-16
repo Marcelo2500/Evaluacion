@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'ingresar-user',
     loadChildren: () => import('./ingresar-user/ingresar-user.module').then( m => m.IngresarUserPageModule)
+  },
+  {
+    path: 'postear',
+    loadChildren: () => import('./postear/postear.module').then( m => m.PostearPageModule)
   }
 ];
 

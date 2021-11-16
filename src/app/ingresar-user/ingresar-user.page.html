@@ -18,11 +18,11 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">contraseña</ion-label>
-    <ion-input placeholder="Ej: 56960504030" #txtContrasenia></ion-input>
+    <ion-input placeholder="Ej: 1234" #txtContrasenia></ion-input>
 </ion-item>
   <br><br>
-  <ion-button expand="block" (click)="agregar(nombre, url, comentario)">
-    Confirmar
+  <ion-button (click)="agregar(txtNombre, txtContrasenia)" fill="outline" >
+    <ion-icon slot="icon-only" name="add"></ion-icon>
   </ion-button>
   <hr>
 </ion-content>

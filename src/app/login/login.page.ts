@@ -12,10 +12,12 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
   usuarios = []
+  listado = []
+  nom : any;
+  con : any;
   aviso : string;
-  user: string = "Marcelo";
-  contrasenia: string = "1234";
   aviso2 : string;
+  existenDatos = "";
   constructor(private usuario: UsuarioService,
               private router : Router,
               private crud: CrudService,
@@ -38,25 +40,33 @@ export class LoginPage implements OnInit {
 
 
   ///////////////////////////////////////////////
-
-  async agregar(txtNombre: HTMLInputElement, txtContrasenia: HTMLInputElement)
+  async listar()
   {
-    // TAREA: guardar los datos del form en formato json  key-value
-    if(txtNombre.value.trim().length == 0)
+    this.nom = "";
+    this.existenDatos = null;
+    this.listado = await this.crud.listar();
+    if(this.listado.length == 0)
+      this.existenDatos = "1";
+  }
+  async ingresar(txtNombre: HTMLInputElement, txtContrasenia: HTMLInputElement){
+    this.listado = [];
+    this.nom = await this.crud.leer(txtNombre.value);
+    this.con = await this.crud.leer2(txtContrasenia.value);
+    if(this.nom == null)
     {
       const toast = await this.toast.create({
-        message : 'Falta especificar el nombre',
-        duration: 2000,
+        message : 'Nombre y/o Contraseña incorrectos',
+        duration: 3000,
         color   : "danger",
         position: "middle"
       });
       toast.present();
     }
-    else if(txtContrasenia.value.trim().length == 0)
+    else if(this.con == null)
     {
       const toast = await this.toast.create({
-        message : 'Falta especificar la contraseña',
-        duration: 2000,
+        message : 'Nombre y/o Contraseña incorrectos',
+        duration: 3000,
         color   : "danger",
         position: "middle"
       });
@@ -64,25 +74,42 @@ export class LoginPage implements OnInit {
     }
     else
     {
-    
-      const datos = [{"nombre": txtNombre.value,
-                      "contraseña"  : txtContrasenia.value
-                    }]
-      this.crud.agregar(datos);
+      this.crud.usuario(this.nom)
+      this.router.navigate(['/home'])
       
-      const toast = await this.toast.create({
-        message : 'El usuario fue guardado',
-        duration: 2000,
-        color   : "success",
-        position: "middle"
-      });
-      toast.present();
-
-      txtNombre.value = "";
-      txtContrasenia.value = "";
+      //this.crud.usuario(this.nom);
     }
   }
-  ingresar(d1 : HTMLInputElement,
+
+  async eliminar(txtNombre: HTMLInputElement, txtContrasenia: HTMLInputElement)
+  {
+        // Ejercicio: perdir confirmar la eliminacion del rut y limpiar el form
+    // si se elimino el rut
+    //alertController
+    this.nom = await this.crud.leer(txtNombre.value);
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirmar Eliminación',
+      message: '<strong>¿Está seguro de continuar?</strong>',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+        }, 
+        {
+          text: 'Si',
+          handler: () => {
+            this.crud.eliminar(this.nom[0].nombre);
+            this.nom = "";              
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
+  }
+  /*  ingresar(d1 : HTMLInputElement,
            d2 : HTMLInputElement)
 
   {//30 40 30
@@ -106,8 +133,8 @@ export class LoginPage implements OnInit {
       this.aviso = "Usuario incorrecto";
     }
   }
- 
-  cambiarC(cCon1: HTMLInputElement,
+  */
+  /*  cambiarC(cCon1: HTMLInputElement,
            cCon2: HTMLInputElement)
     
     {
@@ -126,7 +153,7 @@ export class LoginPage implements OnInit {
     }
 
   }
- 
+  */
 
   //login()
 }

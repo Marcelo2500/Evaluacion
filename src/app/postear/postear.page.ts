@@ -54,7 +54,7 @@ export class PostearPage implements OnInit {
     });
     toast.present();
   }
-  const post =  [{"isUs": ,
+  const post =  [{"nomUs": this.crud.retUsuario(),
                   "titulo": txtTitulo.value,
                   "url"  : txtUrl.value,
                   "comentario"  : txtComentario.value,
