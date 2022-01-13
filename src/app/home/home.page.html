@@ -6,16 +6,18 @@
 
 <ion-content>
   <ion-list>
-    <div *ngFor="let post of posts" [routerLink]="['/', post.id]">
-      <ion-avatar>
-        <img [src]="post.imagenUrl" />
-      </ion-avatar>
-      <ion-label color="primary">{{post.nombre | titlecase }}</ion-label>
+    <div *ngFor="let item of posts" [routerLink]="['/', post.id]">
+      <ion-item>
+        <ion-label>{{item[0].titulo}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{item[0].url}}</ion-label>
+      </ion-item>
     </div>    
   </ion-list>
   
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="danger" type="button" (click)="comentariosP()">
+    <ion-fab-button color="danger" type="button" (click)="newPost()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

@@ -10,18 +10,32 @@ import { UsuarioService } from '../usuario.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  posts = []
+  posts: any
+  existenDatos: any;
+  nom: string;
   constructor(private usuario: UsuarioService,
               private router : Router,
               private crud: CrudService,
               private toast: ToastController,
               private alertController: AlertController) {}
 
+  ngOnInit() {
+    this.posts = this.crud.getPosts()
+  }
 
-
+  ionViewWillEnter() {
+    this.posts = this.crud.getPosts()
+  }
   newPost()
   {
     this.router.navigate(['/postear'])
   }
-  
+  async listar()
+  {
+    this.nom = "";
+    this.existenDatos = null;
+    this.posts = await this.crud.getPosts();
+    if(this.posts.length == 0)
+      this.existenDatos = "1";
+  }
 }

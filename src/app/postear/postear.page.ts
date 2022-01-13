@@ -54,15 +54,17 @@ export class PostearPage implements OnInit {
     });
     toast.present();
   }
+  else
+  {
   const post =  [{"nomUs": this.crud.retUsuario(),
                   "titulo": txtTitulo.value,
                   "url"  : txtUrl.value,
                   "comentario"  : txtComentario.value,
-                    }]
+    }]
   this.crud.addPost(post);
-
   // envia al usuario a otra pagina
-  this.router.navigate(['/playas']);
+  this.router.navigate(['/home']);
+  }
   }
   
 

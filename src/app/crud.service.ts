@@ -7,21 +7,26 @@ import { HomePage } from './home/home.page';
 export class CrudService {
   usLogin = ""
   constructor(private storage: Storage,
-              private homePage: HomePage) {
-    this.init();
+              private publicaciones: Storage,) {
+    this.init()
+    this.initPost();
   }
-
-  async addPost(publicacion: any) 
-  {
-    let idP = await this.storage.length() + 1;
-    await this.storage.set(idP.toString(), publicacion);
-    await localStorage.setItem(idP.toString(), publicacion);
-  }
-
   async init()
   {
     await this.storage.create();
   }
+  async initPost()
+  {
+    await this.publicaciones.create();
+  }
+  async addPost(publicacion: any) 
+  {
+    let idP = await this.publicaciones.length() + 1;
+    await this.publicaciones.set(idP.toString(), publicacion);
+    await localStorage.setItem(idP.toString(), publicacion);
+  }
+  async getPosts(){ return this.publicaciones}
+  
 
   async usuario(nombre: string){
     this.usLogin = nombre;

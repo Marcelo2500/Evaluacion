@@ -6,4 +6,22 @@
 
 <ion-content>
 
+  <ion-item>
+    <ion-label>Titulo</ion-label>
+    <ion-input placeholder="Ej: Tengo hambre" #txtTitulo></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">url imagen</ion-label>
+    <ion-input #txtUrl></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Comentario</ion-label>
+    <ion-textarea placeholder="Ej: No he comido en media hora..." #txtComentario></ion-textarea>
+  </ion-item>
+  <br><br>
+  <ion-button expand="block" (click)="agregar(txtTitulo, txtUrl, txtComentario)">
+    Guardar
+  </ion-button>
+  <hr>
+
 </ion-content>
